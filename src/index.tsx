@@ -8,7 +8,7 @@ import App from './App';
 
 // css 样式重置
 import "normalize.css"
-import "./assets/index.less"
+import "./assets/css/index.less"
 // store
 import store from "@/store";
 
