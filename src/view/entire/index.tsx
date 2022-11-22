@@ -1,5 +1,7 @@
 import React from "react"
 
-export const Entire: React.FC = () => {
-  return <></>;
+const Entire: React.FC = () => {
+  return <div>Entire</div>;
 }
+
+export default Entire;
