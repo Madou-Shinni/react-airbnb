@@ -4,7 +4,9 @@ import IconLogo from "@/assets/svg/icon_logo";
 
 const Left: React.FC = () => {
   return <LeftWrapper>
-    <IconLogo />
+    <div className={"logo"}>
+      <IconLogo />
+    </div>
   </LeftWrapper>;
 }
 
