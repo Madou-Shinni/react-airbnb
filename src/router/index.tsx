@@ -1,7 +1,7 @@
 import React from "react";
 import {Navigate} from "react-router-dom";
 
-const Home = React.lazy(()=> import("@/view/home"))
+const Home = React.lazy(()=> import("@/view/home/home"))
 const Detail = React.lazy(()=> import("@/view/detail"))
 const Entire = React.lazy(()=> import("@/view/entire"))
 
