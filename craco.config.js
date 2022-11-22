@@ -1,8 +1,8 @@
 const cracoLessPlugin = require("craco-less");
 const path = require('path');
-const resolve = (pathName:any) => path.resolve(__dirname,pathName)
+const resolve = (pathName) => path.resolve(__dirname,pathName)
 
-export default module.exports = {
+module.exports = {
   // ts
   typescript: {
     enableTypeChecking: true /* (default value) */,
