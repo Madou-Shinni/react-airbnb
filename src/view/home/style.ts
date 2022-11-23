@@ -9,5 +9,11 @@ export const HomeWrapper = styled.div`
   .good-price {
     margin-top: 30px;
     text-align: left;
+    
+    .room-list {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 -8px;
+    }
   }
 `

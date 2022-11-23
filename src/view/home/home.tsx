@@ -5,6 +5,7 @@ import {HomeWrapper} from "./style"
 import Banner from "@/view/home/c-cpns/banner/bannner";
 import {fetchHomeDataAction} from "@/store/modules/home";
 import SectionHeader from "@/components/section-header/SectionHeader";
+import RoomItem from "@/components/room-item/RoomItem";
 
 const Home: React.FC = () => {
   /* 从redux中获取数据 */
@@ -22,10 +23,10 @@ const Home: React.FC = () => {
     <div className={"content"}>
       <div className={"good-price"}>
         <SectionHeader title={goodPriceInfo.title} subtitle={goodPriceInfo.subtitle}/>
-        <ul>
+        <ul className={"room-list"}>
           {
-            goodPriceInfo.list.map((v:any)=>(
-              <li key={v.id}>{v.name}</li>
+            goodPriceInfo.list?.slice(0,8).map((v:any)=>(
+              <RoomItem itemData={v} key={v.id} />
             ))
           }
         </ul>
