@@ -3,14 +3,18 @@ const path = require('path');
 const resolve = (pathName) => path.resolve(__dirname,pathName)
 
 module.exports = {
-  // ts
-  typescript: {
-    enableTypeChecking: true /* (default value) */,
-  },
   // less
   plugins: [
     {
       plugin: cracoLessPlugin,
+      // options: {
+      //   lessLoaderOptions: {
+      //     lessOptions: {
+      //       modifyVars: {  },
+      //       javascriptEnabled: true,
+      //     },
+      //   },
+      // },
     }
   ],
   // webpack

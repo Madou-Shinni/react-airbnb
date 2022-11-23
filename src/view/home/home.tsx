@@ -7,6 +7,7 @@ import {fetchHomeDataAction} from "@/store/modules/home";
 import SectionHeader from "@/components/section-header/SectionHeader";
 import RoomItem from "@/components/room-item/RoomItem";
 
+const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 const Home: React.FC = () => {
   /* 从redux中获取数据 */
   const {goodPriceInfo} = useSelector((state:any)=>({
