@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 interface StyleProps {
   verifyColor?: string
+  bottomInfoColor?: string
 }
 
 export const RoomItemWrapper = styled.div<StyleProps>`
@@ -60,6 +61,10 @@ export const RoomItemWrapper = styled.div<StyleProps>`
 
     .count {
       margin: 0 2px 0 4px;
+    }
+    
+    .extra {
+      color: ${props => props.bottomInfoColor};
     }
 
     .MuiRating-decimal {
