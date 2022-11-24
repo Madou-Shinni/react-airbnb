@@ -9,7 +9,7 @@ type Props = {
 }
 
 const SectionHeader: React.FC<Props> = (props) => {
-  const { title, subtitle = "默认子标题"} = props
+  const { title, subtitle = ""} = props
 
   return <SectionHeaderWrapper>
     {title &&  <h2 className={"title"}>{title}</h2>}

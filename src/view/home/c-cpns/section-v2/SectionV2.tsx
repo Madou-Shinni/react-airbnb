@@ -3,6 +3,7 @@ import { SectionV2Wrapper } from "./style"
 import SectionHeader from "@/components/section-header/SectionHeader";
 import SectionRooms from "@/components/section-rooms/SectionRooms";
 import SectionTabs from "@/components/section-tabs/SectionTabs";
+import SectionFooter from "@/components/section-footer/SectionFooter";
 
 type Props = {
   infoData: any
@@ -26,6 +27,7 @@ const SectionV2: React.FC<Props> = (props) => {
     <SectionHeader title={infoData.title} subtitle={infoData.subtitle} />
     <SectionTabs tabNames={tabNames} tabClick={tabClickHandle} />
     <SectionRooms roomList={infoData.dest_list?.[name]} itemWidth={"33.3%"}/>
+    <SectionFooter name={name}/>
   </SectionV2Wrapper>;
 }
 
