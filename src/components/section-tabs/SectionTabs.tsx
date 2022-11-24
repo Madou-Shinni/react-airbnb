@@ -2,16 +2,18 @@ import React, {useState} from "react"
 import { SectionTabsWrapper } from "./style";
 import classNames from "classnames";
 
-type Props = {
+interface Props {
   tabNames: []
+  tabClick: (i:number,v:any) => void
 }
 
 const SectionTabs: React.FC<Props> = (props) => {
-  const {tabNames = [] } = props
+  const {tabNames = [], tabClick } = props
   const [currentIndex, setCurrentIndex] = useState(0)
 
-  const itemClickHandle = (i:number) => {
+  const itemClickHandle = (i:number,v:any) => {
     setCurrentIndex(i)
+    tabClick(i, v);
   }
 
   return <SectionTabsWrapper>
@@ -20,7 +22,7 @@ const SectionTabs: React.FC<Props> = (props) => {
         <div
           key={i}
           className={classNames("item",{active:i === currentIndex})}
-          onClick={e => itemClickHandle(i)}
+          onClick={e => itemClickHandle(i,v)}
         >
           {v}
         </div>

@@ -1,4 +1,4 @@
-import React, {useEffect} from "react"
+import React, {useCallback, useEffect, useState} from "react"
 import {shallowEqual, useDispatch, useSelector} from "react-redux";
 
 import {HomeWrapper} from "./style"
@@ -16,6 +16,12 @@ const Home: React.FC = () => {
     highScoreInfo: state.home.highScoreInfo,
     discountInfo: state.home.discountInfo
   }),shallowEqual)
+  
+  /* 点击事件处理函数 */
+  const [name, setName] = useState("佛山")
+  const tabClickHandle = useCallback((i:number,v:any) => {
+    setName(v)
+  },[])
 
   /* 数据处理 */
   const tabNames = discountInfo.dest_address?.map((v:any) => v.name)
@@ -32,8 +38,8 @@ const Home: React.FC = () => {
       {/* 折扣数据 */}
       <div className={"discount"}>
         <SectionHeader title={discountInfo.title} subtitle={discountInfo.subtitle} />
-        <SectionTabs tabNames={tabNames} />
-        <SectionRooms roomList={discountInfo.dest_list?.["成都"]} itemWidth={"33.3%"}/>
+        <SectionTabs tabNames={tabNames} tabClick={tabClickHandle} />
+        <SectionRooms roomList={discountInfo.dest_list?.[name]} itemWidth={"33.3%"}/>
       </div>
 
       <Section infoData={goodPriceInfo}/>
