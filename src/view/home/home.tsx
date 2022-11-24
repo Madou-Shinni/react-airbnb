@@ -1,13 +1,11 @@
-import React, {useCallback, useEffect, useState} from "react"
+import React, {useEffect} from "react"
 import {shallowEqual, useDispatch, useSelector} from "react-redux";
 
 import {HomeWrapper} from "./style"
 import Banner from "@/view/home/c-cpns/banner/bannner";
 import {fetchHomeDataAction} from "@/store/modules/home";
 import Section from "@/view/home/c-cpns/section-v1/Section";
-import SectionHeader from "@/components/section-header/SectionHeader";
-import SectionRooms from "@/components/section-rooms/SectionRooms";
-import SectionTabs from "@/components/section-tabs/SectionTabs";
+import SectionV2 from "@/view/home/c-cpns/section-v2/SectionV2";
 
 const Home: React.FC = () => {
   /* 从redux中获取数据 */
@@ -16,15 +14,6 @@ const Home: React.FC = () => {
     highScoreInfo: state.home.highScoreInfo,
     discountInfo: state.home.discountInfo
   }),shallowEqual)
-  
-  /* 点击事件处理函数 */
-  const [name, setName] = useState("佛山")
-  const tabClickHandle = useCallback((i:number,v:any) => {
-    setName(v)
-  },[])
-
-  /* 数据处理 */
-  const tabNames = discountInfo.dest_address?.map((v:any) => v.name)
 
   /* 派发异步事件 */
   const dispatch = useDispatch()
@@ -36,14 +25,15 @@ const Home: React.FC = () => {
     <Banner />
     <div className={"content"}>
       {/* 折扣数据 */}
-      <div className={"discount"}>
-        <SectionHeader title={discountInfo.title} subtitle={discountInfo.subtitle} />
-        <SectionTabs tabNames={tabNames} tabClick={tabClickHandle} />
-        <SectionRooms roomList={discountInfo.dest_list?.[name]} itemWidth={"33.3%"}/>
-      </div>
+      {/*<div className={"discount"}>*/}
+      {/*  <SectionHeader title={discountInfo.title} subtitle={discountInfo.subtitle} />*/}
+      {/*  <SectionTabs tabNames={tabNames} tabClick={tabClickHandle} />*/}
+      {/*  <SectionRooms roomList={discountInfo.dest_list?.[name]} itemWidth={"33.3%"}/>*/}
+      {/*</div>*/}
+      { Object.keys(discountInfo).length && <SectionV2 infoData={discountInfo} />}
 
-      <Section infoData={goodPriceInfo}/>
-      <Section infoData={highScoreInfo}/>
+      { Object.keys(discountInfo).length && <Section infoData={goodPriceInfo}/>}
+      { Object.keys(discountInfo).length && <Section infoData={highScoreInfo}/>}
     </div>
   </HomeWrapper>;
 }
