@@ -3,11 +3,12 @@ import styled from "styled-components";
 interface StyleProps {
   verifyColor?: string
   bottomInfoColor?: string
+  itemWidth?: string
 }
 
 export const RoomItemWrapper = styled.div<StyleProps>`
   box-sizing: border-box;
-  width: 25%;
+  width: ${props => props.itemWidth};
   padding: 8px;
 
   .inner {

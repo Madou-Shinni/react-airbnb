@@ -16,7 +16,7 @@ const Section: React.FC<Props> = (props) => {
 
   return <SectionWrapper>
     <SectionHeader title={infoData.title} subtitle={infoData.subtitle}/>
-    <SectionRooms roomList={infoData.list} />
+    <SectionRooms roomList={infoData.list} itemWidth={"25%"}/>
   </SectionWrapper>;
 }
 

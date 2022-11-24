@@ -18,13 +18,18 @@ type Props = {
       content_color: string
     }
   }
+
+  itemWidth?:string
 }
 
 const RoomItem: React.FC<Props> = (props) => {
-  const { itemData } = props
+  const { itemData,itemWidth } = props
+
   return <RoomItemWrapper
     verifyColor={itemData?.verify_info?.text_color || "#39576a"}
-    bottomInfoColor={itemData?.bottom_info?.content_color || "#39576a"}>
+    bottomInfoColor={itemData?.bottom_info?.content_color || "#39576a"}
+    itemWidth={itemWidth}
+  >
     <div className={"inner"}>
       <div className={"cover"}>
         <img src={itemData.picture_url} alt=""/>
