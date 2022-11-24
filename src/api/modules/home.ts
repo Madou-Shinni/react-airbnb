@@ -17,3 +17,9 @@ export const getHomeDiscountData = ()=>{
     url: "/home/discount"
   })
 }
+
+export const getHomeHotRecommendData = ()=>{
+  return apiRequest.get({
+    url: "/home/hotrecommenddest"
+  })
+}

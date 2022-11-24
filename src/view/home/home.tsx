@@ -9,10 +9,11 @@ import SectionV2 from "@/view/home/c-cpns/section-v2/SectionV2";
 
 const Home: React.FC = () => {
   /* 从redux中获取数据 */
-  const {goodPriceInfo,highScoreInfo,discountInfo} = useSelector((state:any)=>({
+  const {goodPriceInfo,highScoreInfo,discountInfo,recommendInfo} = useSelector((state:any)=>({
     goodPriceInfo: state.home.goodPriceInfo,
     highScoreInfo: state.home.highScoreInfo,
-    discountInfo: state.home.discountInfo
+    discountInfo: state.home.discountInfo,
+    recommendInfo: state.home.recommendInfo
   }),shallowEqual)
 
   /* 派发异步事件 */
@@ -31,9 +32,10 @@ const Home: React.FC = () => {
       {/*  <SectionRooms roomList={discountInfo.dest_list?.[name]} itemWidth={"33.3%"}/>*/}
       {/*</div>*/}
       { Object.keys(discountInfo).length && <SectionV2 infoData={discountInfo} />}
+      { Object.keys(recommendInfo).length && <SectionV2 infoData={recommendInfo} />}
 
-      { Object.keys(discountInfo).length && <Section infoData={goodPriceInfo}/>}
-      { Object.keys(discountInfo).length && <Section infoData={highScoreInfo}/>}
+      { Object.keys(goodPriceInfo).length && <Section infoData={goodPriceInfo}/>}
+      { Object.keys(highScoreInfo).length && <Section infoData={highScoreInfo}/>}
     </div>
   </HomeWrapper>;
 }
