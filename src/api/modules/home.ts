@@ -5,3 +5,9 @@ export const getHomeGoodsPriceData = ()=>{
     url: "/home/goodprice"
   })
 }
+
+export const getHomeHighScoreData = ()=>{
+  return apiRequest.get({
+    url: "/home/highscore"
+  })
+}

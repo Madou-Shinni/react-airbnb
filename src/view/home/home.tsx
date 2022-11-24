@@ -4,13 +4,13 @@ import {shallowEqual, useDispatch, useSelector} from "react-redux";
 import {HomeWrapper} from "./style"
 import Banner from "@/view/home/c-cpns/banner/bannner";
 import {fetchHomeDataAction} from "@/store/modules/home";
-import SectionHeader from "@/components/section-header/SectionHeader";
-import SectionRooms from "@/components/section-rooms/SectionRooms";
+import Section from "@/view/home/c-cpns/section-v1/Section";
 
 const Home: React.FC = () => {
   /* 从redux中获取数据 */
-  const {goodPriceInfo} = useSelector((state:any)=>({
-    goodPriceInfo: state.home.goodPriceInfo
+  const {goodPriceInfo,highScoreInfo} = useSelector((state:any)=>({
+    goodPriceInfo: state.home.goodPriceInfo,
+    highScoreInfo: state.home.highScoreInfo
   }),shallowEqual)
   /* 派发异步事件 */
   const dispatch = useDispatch()
@@ -21,10 +21,8 @@ const Home: React.FC = () => {
   return <HomeWrapper>
     <Banner />
     <div className={"content"}>
-      <div className={"good-price"}>
-        <SectionHeader title={goodPriceInfo.title} subtitle={goodPriceInfo.subtitle}/>
-        <SectionRooms roomList={goodPriceInfo.list} />
-      </div>
+      <Section infoData={goodPriceInfo}/>
+      <Section infoData={highScoreInfo}/>
     </div>
   </HomeWrapper>;
 }
