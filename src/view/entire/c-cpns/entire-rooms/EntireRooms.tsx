@@ -1,18 +1,19 @@
 import React from "react"
 import { EntireRoomsWrapper } from "./style";
-import {useSelector} from "react-redux";
+import {shallowEqual, useSelector} from "react-redux";
 import RoomItem from "@/components/room-item/RoomItem";
 
 type Props = {}
 
 const EntireRooms: React.FC<Props> = (props) => {
   /* 从redux中获取roomList数据 */
-  const { roomList ,totalCount } = useSelector((state:any) => ({
+  const { roomList ,totalCount, isLoading } = useSelector((state:any) => ({
     roomList : state.entire.roomList,
-    totalCount : state.entire.totalCount
-  }))
+    totalCount : state.entire.totalCount,
+    isLoading: state.entire.isLoading
+  }),shallowEqual)
   return <EntireRoomsWrapper>
-    <h2 className={"title"}>共 处住所</h2>
+    <h2 className={"title"}>共 {totalCount} 处住所</h2>
     <div className={"list"}>
       {
         roomList?.map((item:any) => (
@@ -20,6 +21,8 @@ const EntireRooms: React.FC<Props> = (props) => {
         ))
       }
     </div>
+    {/* 遮盖蒙版 */}
+    {isLoading && <div className={"cover"}></div>}
   </EntireRoomsWrapper>;
 }
 

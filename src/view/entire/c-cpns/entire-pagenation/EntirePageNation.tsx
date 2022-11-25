@@ -2,8 +2,8 @@ import React from "react"
 import Pagination from '@mui/material/Pagination';
 
 import { EntirePageNationWrapper } from "./style";
-import {useDispatch, useSelector} from "react-redux";
-import {changeCurrentPage, fetchEntireDataAction} from "@/store/modules/entire";
+import {shallowEqual, useDispatch, useSelector} from "react-redux";
+import {fetchEntireDataAction} from "@/store/modules/entire";
 
 type Props = {}
 
@@ -12,7 +12,7 @@ const EntirePageNation: React.FC<Props> = (props) => {
     totalCount: state.entire.totalCount,
     currentPage: state.entire.currentPage,
     roomList: state.entire.roomList
-  }))
+  }),shallowEqual)
 
   const totalPage = Math.ceil(totalCount / 20)
   const startCount = currentPage * 20 +1
@@ -21,6 +21,9 @@ const EntirePageNation: React.FC<Props> = (props) => {
   /* event handle */
   const dispatch = useDispatch();
   function pageChangeHandle(event: any, pageCount: number) {
+    /* 回到顶部 */
+    window.scroll(0,0)
+
     // 更新页码(这里pageCount是从1开始的，所以需要-1)
     // dispatch(changeCurrentPage(pageCount - 1))
     // 获取最新的数据

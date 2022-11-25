@@ -7,8 +7,11 @@ export const fetchEntireDataAction:any = createAsyncThunk<any,any>("fetchdata",
     dispatch(changeCurrentPage(payload))
     // 1.根据页码获取最新数据
     const currentPage = getState().entire.currentPage
-    const res:any = await getEntireRoomList(currentPage * 20)
 
+    /* 在发送请求前加载蒙版，结束时蒙版消失 */
+    dispatch(changeIsLoading(true))
+    const res:any = await getEntireRoomList(currentPage * 20)
+    dispatch(changeIsLoading(false))
     // 2.将数据保存到store
     dispatch(changeRoomList(res.list))
     dispatch(changeTotalCount(res.totalCount))
@@ -19,7 +22,8 @@ const entireSlice = createSlice({
   initialState: {
     currentPage: 0, // 当前页
     roomList: [], // 房间列表
-    totalCount: 0 // 总数
+    totalCount: 0, // 总数
+    isLoading: false // 是否加载蒙版
   },
   reducers: {
     changeRoomList(state, { payload }) {
@@ -31,6 +35,9 @@ const entireSlice = createSlice({
     changeTotalCount(state, { payload }) {
       state.totalCount = payload
     },
+    changeIsLoading(state, { payload }) {
+      state.isLoading = payload
+    },
   },
 })
 
@@ -38,6 +45,7 @@ export const {
   changeRoomList,
   changeCurrentPage,
   changeTotalCount,
+  changeIsLoading
 } = entireSlice.actions
 
 export default entireSlice.reducer;
