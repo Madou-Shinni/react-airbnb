@@ -1,8 +1,10 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {getEntireRoomList} from "@/api/modules/entire";
 
-export const fetchEntireDataAction:any = createAsyncThunk("fetchdata",
-  async (payload,{dispatch, getState}:any) => {
+export const fetchEntireDataAction:any = createAsyncThunk<any,any>("fetchdata",
+  async (payload = 0,{dispatch, getState}:any) => {
+    // 获取分页参数 payload 是传入的参数,默认为0
+    dispatch(changeCurrentPage(payload))
     // 1.根据页码获取最新数据
     const currentPage = getState().entire.currentPage
     const res:any = await getEntireRoomList(currentPage * 20)
