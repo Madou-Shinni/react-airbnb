@@ -14,9 +14,17 @@ const Header: React.FC = () => {
   const {isFixed} = headerConfig
 
   return <HeaderWrapper className={classNames({fixed: isFixed})}>
-    <Left />
-    <Center />
-    <Right />
+    <div className={"content"}>
+      <div className={"top"}>
+        <Left />
+        <Center />
+        <Right />
+      </div>
+      {/*<div className={"search-area"}>*/}
+      {/*</div>*/}
+    </div>
+
+    {/*<div className={"cover"}></div>*/}
   </HeaderWrapper>;
 }
 
