@@ -13,7 +13,6 @@ const Detail: React.FC = () => {
   },[dispatch])
 
   return <DetailWrapper>
-    <Header />
     <Picture />
   </DetailWrapper>;
 }

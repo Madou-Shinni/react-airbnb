@@ -26,7 +26,6 @@ const Home: React.FC = () => {
   },[dispatch])
 
   return <HomeWrapper>
-    <Header />
     <Banner />
     <div className={"content"}>
       {/* 折扣数据 */}
