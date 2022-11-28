@@ -6,6 +6,7 @@ import IconArrowLeft from "@/assets/svg/IconArrowLeft";
 import IconArrowRight from "@/assets/svg/IconArrowRight";
 
 type Props = {
+  itemClick?: (arg:any) => any
   itemData: {
     name: string
     picture_url:string
@@ -34,17 +35,22 @@ const settings = {
 };
 
 const RoomItem: React.FC<Props> = (props) => {
-  const { itemData,itemWidth } = props
+  const { itemData,itemWidth, itemClick } = props
   const sliderRef = useRef<any>()
 
   const onclickHandle = (isRight = false) => {
     isRight ? sliderRef.current.slickNext() : sliderRef.current.slickPrev()
   }
 
+  const itemClickHandle = () => {
+    if (itemClick) itemClick(itemData)
+  }
+
   return <RoomItemWrapper
     verifyColor={itemData?.verify_info?.text_color || "#39576a"}
     bottomInfoColor={itemData?.bottom_info?.content_color || "#39576a"}
     itemWidth={itemWidth}
+    onClick={itemClickHandle}
   >
     <div className={"inner"}>
       {/*<div className={"cover"}>
