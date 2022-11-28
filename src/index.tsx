@@ -1,6 +1,6 @@
-import React, { Suspense } from 'react';
+import React, {Suspense} from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from  "react-router-dom"
+import {BrowserRouter} from "react-router-dom"
 import {Provider} from "react-redux";
 import {ThemeProvider} from "styled-components";
 import "slick-carousel/slick/slick.css";
@@ -22,14 +22,14 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <Suspense fallback="loading">
-      <Provider store={store}>
+    <Provider store={store}>
+      <Suspense fallback="loading">
         <ThemeProvider theme={theme}>
           <BrowserRouter>
-            <App />
+            <App/>
           </BrowserRouter>
         </ThemeProvider>
-      </Provider>
-    </Suspense>
+      </Suspense>
+    </Provider>
   </React.StrictMode>
 );

@@ -5,6 +5,7 @@ import EntireRooms from "@/view/entire/c-cpns/entire-rooms/EntireRooms";
 import EntirePageNation from "@/view/entire/c-cpns/entire-pagenation/EntirePageNation";
 import {useDispatch} from "react-redux";
 import {fetchEntireDataAction} from "@/store/modules/entire";
+import Header from "@/components/header/Header";
 
 const Entire: React.FC = () => {
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ const Entire: React.FC = () => {
   },[dispatch])
 
   return <EntireWrapper>
+    <Header />
     <EntireFilter />
     <EntireRooms />
     <EntirePageNation />

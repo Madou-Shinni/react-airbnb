@@ -6,6 +6,8 @@ import Banner from "@/view/home/c-cpns/banner/bannner";
 import {fetchHomeDataAction} from "@/store/modules/home";
 import Section from "@/view/home/c-cpns/section-v1/Section";
 import SectionV2 from "@/view/home/c-cpns/section-v2/SectionV2";
+import Header from "@/components/header/Header";
+import {changeHeaderConfig} from "@/store/modules/main";
 
 const Home: React.FC = () => {
   /* 从redux中获取数据 */
@@ -20,9 +22,11 @@ const Home: React.FC = () => {
   const dispatch = useDispatch()
   useEffect(()=>{
     dispatch(fetchHomeDataAction())
+    dispatch(changeHeaderConfig({isFixed:true}))
   },[dispatch])
 
   return <HomeWrapper>
+    <Header />
     <Banner />
     <div className={"content"}>
       {/* 折扣数据 */}
